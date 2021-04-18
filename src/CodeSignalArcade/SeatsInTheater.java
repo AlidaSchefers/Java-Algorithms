@@ -1,2 +1,7 @@
-package CodeSignalArcade;public class SeatsInTheater {
+package CodeSignalArcade;
+
+public class SeatsInTheater {
+    int seatsInTheater(int nCols, int nRows, int col, int row) {
+        return (nRows - row) * (nCols - col + 1);
+    }
 }
