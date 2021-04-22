@@ -59,7 +59,28 @@ public class MergeTwoSortedLinkedLists {
      *
      */
     static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
-
+        //make new LinkedList
+        LinkedList<Integer> mergedList = new LinkedList<Integer>();
+        SinglyLinkedListNode curANode = new SinglyLinkedListNode;
+        SinglyLinkedListNode curBNode = new SinglyLinkedListNode;
+        while(curANode.data != null && curBNode.data != null){
+            if(curANode.data == null && curBNode.data != null) {
+                mergedList.add(curBNode.data);
+                curBNode = curBNode.next;
+            }else if(curANode.data != null && curBNode.data == null){
+                mergedList.add(curANode.data);
+                curANode = curANode.next;
+            }else if(curANode.data < curBNode.data){
+                mergedList.add(curANode.data);
+                curANode = curANode.next;
+            }else{ // A > B or A == B
+                mergedList.add(curBNode.data);
+                curBNode = curBNode.next;
+            }
+        }
+        return SinglyLinkedListNode(2);
+        System.out.println(curANode.data);
+        //return the head of the mergedList
     }
 
     private static final Scanner scanner = new Scanner(System.in);
