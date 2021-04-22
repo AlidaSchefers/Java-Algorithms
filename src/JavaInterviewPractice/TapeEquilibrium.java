@@ -1,3 +1,5 @@
+package JavaInterviewPractice;
+
 import java.util.Arrays;
 
 //from Codility
