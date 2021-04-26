@@ -1,11 +1,13 @@
-//from HackerRank: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
+package ComputationalLogicAlgos;
 
-import java.io.BufferedReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Result {
+//from HackerRank: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
+
+class Result {
     /*
      * Complete the 'climbingLeaderboard' function below.
      *
@@ -17,14 +19,11 @@ public class Result {
 
     public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
         // Write your code here
-
         //creating new arrays
-        List<Integer> rankedPlaces = new ArrayList<Integer>();
-        List<Integer> newRanked = new ArrayList<Integer>();
-        // newRanked.add(ranked.get(0));
+        List<Integer> rankedPlaces = new ArrayList<Integer>(); //e.g. [1, 2, 3, 4, 5] places
+        List<Integer> newRanked = new ArrayList<Integer>(); //will be a new scoreboard without duplicates. e.g. [100, 50, 40, 20, 10]
         int currentRankedScore = ranked.get(0) + 1;
         int currentRankedPlace = 1;
-        // int currentRankedPlace = 1;
         for (int i = 0; i < ranked.size(); i++){
             if(ranked.get(i) < currentRankedScore){
                 newRanked.add(ranked.get(i));
@@ -33,8 +32,8 @@ public class Result {
                 currentRankedPlace++;
             }
         }
-        int playersRankPlace = newRanked.size()+1;
-        //finding the player's ranking.
+
+        //finding the player's rankings.
         int newRankedIndex = newRanked.size()-1; //starts at the end
         List<Integer> playerRanked = new ArrayList<Integer>();
         for (int i = 0; i < player.size(); i++){
@@ -42,15 +41,14 @@ public class Result {
                 if(player.get(i) < newRanked.get(newRankedIndex)){
                     playerRanked.add(rankedPlaces.get(newRankedIndex)+1);
                     break;
-                }else{
+                }else if (newRankedIndex > 0){ //prevents the index from becoming -1
                     newRankedIndex--;
+                }else{ //if the score is not smaller than the top score on the scoreboard, then it gets #1
+                    playerRanked.add(1);
+                    break;
                 }
             }
         }
-        System.out.println(Arrays.toString(rankedPlaces.toArray()));
-        System.out.println(Arrays.toString(newRanked.toArray()));
-        System.out.println(Arrays.toString(playerRanked.toArray()));
-
         return playerRanked;
     }
 }
