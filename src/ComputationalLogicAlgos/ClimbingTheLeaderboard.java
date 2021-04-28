@@ -28,8 +28,7 @@ class Result {
             if(ranked.get(i) < currentRankedScore){
                 newRanked.add(ranked.get(i));
                 currentRankedScore = ranked.get(i);
-                rankedPlaces.add(currentRankedPlace);
-                currentRankedPlace++;
+                rankedPlaces.add(currentRankedPlace++);
             }
         }
 
