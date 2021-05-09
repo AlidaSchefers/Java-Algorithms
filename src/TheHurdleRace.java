@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 //comes from HackerRank: https://www.hackerrank.com/challenges/the-hurdle-race/problem
+//solved in 8 min.
 class Result {
 
     /*
