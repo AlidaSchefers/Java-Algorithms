@@ -14,7 +14,16 @@ class Result {
 
     public static int findDigits(int n) {
         // Write your code here
-
+        String nStr = String.valueOf(n);
+        int divisorCount = 0;
+        for (int i = 0; i < nStr.length(); i++){
+            if(nStr.charAt(i) != '0'){
+                if(n % Character.getNumericValue(nStr.charAt(i)) == 0){
+                    divisorCount++;
+                }
+            }
+        }
+        return divisorCount;
     }
 
 }
