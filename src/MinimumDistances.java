@@ -1,8 +1,9 @@
-
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.toList;
+
+//comes from HackerRank: https://www.hackerrank.com/challenges/minimum-distances/problem
 
 class Result {
 
@@ -29,7 +30,7 @@ class Result {
 
     public static int minimumDistances(List<Integer> a) {
         // Write your code here
-        int minDistance = Integer.MAX_VALUE;
+        int minDistance = a.size();
         int firstIndex = 0;
         int secondIndex = a.size()-1;
         int numOfPairs = 0;
