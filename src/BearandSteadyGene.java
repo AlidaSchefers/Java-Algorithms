@@ -30,6 +30,7 @@ class Result {
         for(int i = 0; i < gene.length(); i++){
             letterInstances.replace(gene.charAt(i), letterInstances.get(gene.charAt(i))+1);
         }
+
         // System.out.println(letterInstances);
         HashMap<Character, Integer> overRepLetters = new HashMap<Character, Integer>();
         letterInstances.forEach((k, v) -> {
@@ -37,6 +38,17 @@ class Result {
                 overRepLetters.put(k, (v - (gene.length()/4)));
             }
         });
+
+        //shows that the hashmaps are created correctly
+//        System.out.println("letterInstances:");
+//        for (Map.Entry entry : letterInstances.entrySet()) {
+//            System.out.println(entry.getKey() + ", " + entry.getValue());
+//        }
+//        System.out.println("overrep:");
+//        for (Map.Entry entry : overRepLetters.entrySet()) {
+//            System.out.println(entry.getKey() + ", " + entry.getValue());
+//        }
+
         int smallestSubString = gene.length();
         for(int i = 0; i < gene.length(); i++){
             if(overRepLetters.containsKey(gene.charAt(i))){
