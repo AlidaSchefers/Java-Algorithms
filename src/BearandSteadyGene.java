@@ -12,8 +12,9 @@ class Result {
      */
 
     public static boolean isAllZero(HashMap<Character, Integer> hm){
+        Integer zero = new Integer(0);
         for (Integer i : hm.values()) {
-            if (i != 0) {
+            if (!zero.equals(i)) {
                 return false;
             }
         }
@@ -30,7 +31,6 @@ class Result {
         for(int i = 0; i < gene.length(); i++){
             letterInstances.replace(gene.charAt(i), letterInstances.get(gene.charAt(i))+1);
         }
-
         // System.out.println(letterInstances);
         HashMap<Character, Integer> overRepLetters = new HashMap<Character, Integer>();
         letterInstances.forEach((k, v) -> {
@@ -39,28 +39,34 @@ class Result {
             }
         });
 
-        //shows that the hashmaps are created correctly
-//        System.out.println("letterInstances:");
-//        for (Map.Entry entry : letterInstances.entrySet()) {
-//            System.out.println(entry.getKey() + ", " + entry.getValue());
-//        }
-//        System.out.println("overrep:");
-//        for (Map.Entry entry : overRepLetters.entrySet()) {
-//            System.out.println(entry.getKey() + ", " + entry.getValue());
-//        }
+        System.out.println("letterInstances:");
+        for (Map.Entry entry : letterInstances.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("overrep:");
+        for (Map.Entry entry : overRepLetters.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
 
         int smallestSubString = gene.length();
         for(int i = 0; i < gene.length(); i++){
             System.out.println("current character: "+gene.charAt(i));
             System.out.println("current character is overrep: "+(overRepLetters.containsKey(gene.charAt(i))));
             if(overRepLetters.containsKey(gene.charAt(i))){
-                HashMap<Character, Integer> tempOverRepLetters = overRepLetters;
+                HashMap<Character, Integer> tempOverRepLetters = new HashMap<>(overRepLetters);
                 int index = i;
                 int substringLength = 0;
                 while(!isAllZero(tempOverRepLetters) && index != gene.length()){
+                    System.out.println("temp overrep:");
+                    for (Map.Entry entry : tempOverRepLetters.entrySet()) {
+                        System.out.println(entry.getKey() + ": " + entry.getValue());
+                    }
                     System.out.println("is current character "+gene.charAt(index)+" overrep? "+(tempOverRepLetters.containsKey(gene.charAt(index))));
                     if(tempOverRepLetters.containsKey(gene.charAt(index))){
-                        tempOverRepLetters.replace(gene.charAt(index), tempOverRepLetters.get(gene.charAt(index))-1);
+                        if(tempOverRepLetters.get(gene.charAt(index)) > 0){
+                            tempOverRepLetters.replace(gene.charAt(index), tempOverRepLetters.get(gene.charAt(index))-1);
+                        }
                         substringLength++;
                         index++;
                     }else{
@@ -68,13 +74,15 @@ class Result {
                         index++;
                     }
                 }
-                if(substringLength < smallestSubString) {
+                if(isAllZero(tempOverRepLetters) && substringLength < smallestSubString) {
                     smallestSubString = substringLength;
                 }
             }
         }
-
-        return 5; //temporary
+        if(smallestSubString == gene.length()){
+            return 0;
+        }
+        return smallestSubString; //temporary
     }
 
 }
