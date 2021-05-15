@@ -51,23 +51,26 @@ class Result {
 
         int smallestSubString = gene.length();
         for(int i = 0; i < gene.length(); i++){
+            System.out.println("current character: "+gene.charAt(i));
+            System.out.println("current character is overrep: "+(overRepLetters.containsKey(gene.charAt(i))));
             if(overRepLetters.containsKey(gene.charAt(i))){
                 HashMap<Character, Integer> tempOverRepLetters = overRepLetters;
                 int index = i;
                 int substringLength = 0;
-                // while(!isAllZero(tempOverRepLetters)){
-                //     if(overRepLetters.containsKey(gene.charAt(index))){
-                //         overRepLetters.replace(gene.charAt(index), overRepLetters.get(gene.charAt(index))-1);
-                //         substringLength++;
-                //         index++;
-                //     }else{
-                //         substringLength++;
-                //         index++;
-                //     }
-                // }
-                // if(substringLength < smallestSubString) {
-                //     smallestSubString = substringLength;
-                // }
+                while(!isAllZero(tempOverRepLetters) && index != gene.length()){
+                    System.out.println("is current character "+gene.charAt(index)+" overrep? "+(tempOverRepLetters.containsKey(gene.charAt(index))));
+                    if(tempOverRepLetters.containsKey(gene.charAt(index))){
+                        tempOverRepLetters.replace(gene.charAt(index), tempOverRepLetters.get(gene.charAt(index))-1);
+                        substringLength++;
+                        index++;
+                    }else{
+                        substringLength++;
+                        index++;
+                    }
+                }
+                if(substringLength < smallestSubString) {
+                    smallestSubString = substringLength;
+                }
             }
         }
 
