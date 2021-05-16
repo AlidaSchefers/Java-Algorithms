@@ -39,30 +39,30 @@ class Result {
             }
         });
 
-        System.out.println("letterInstances:");
-        for (Map.Entry entry : letterInstances.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        System.out.println("overrep:");
-        for (Map.Entry entry : overRepLetters.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+//        System.out.println("letterInstances:");
+//        for (Map.Entry entry : letterInstances.entrySet()) {
+//            System.out.println(entry.getKey() + ": " + entry.getValue());
+//        }
+//        System.out.println("overrep:");
+//        for (Map.Entry entry : overRepLetters.entrySet()) {
+//            System.out.println(entry.getKey() + ": " + entry.getValue());
+//        }
 
 
         int smallestSubString = gene.length();
         for(int i = 0; i < gene.length(); i++){
-            System.out.println("current character: "+gene.charAt(i));
-            System.out.println("current character is overrep: "+(overRepLetters.containsKey(gene.charAt(i))));
+//            System.out.println("current character: "+gene.charAt(i));
+//            System.out.println("current character is overrep: "+(overRepLetters.containsKey(gene.charAt(i))));
             if(overRepLetters.containsKey(gene.charAt(i))){
                 HashMap<Character, Integer> tempOverRepLetters = new HashMap<>(overRepLetters);
                 int index = i;
                 int substringLength = 0;
                 while(!isAllZero(tempOverRepLetters) && index != gene.length()){
-                    System.out.println("temp overrep:");
-                    for (Map.Entry entry : tempOverRepLetters.entrySet()) {
-                        System.out.println(entry.getKey() + ": " + entry.getValue());
-                    }
-                    System.out.println("is current character "+gene.charAt(index)+" overrep? "+(tempOverRepLetters.containsKey(gene.charAt(index))));
+//                    System.out.println("temp overrep:");
+//                    for (Map.Entry entry : tempOverRepLetters.entrySet()) {
+//                        System.out.println(entry.getKey() + ": " + entry.getValue());
+//                    }
+//                    System.out.println("is current character "+gene.charAt(index)+" overrep? "+(tempOverRepLetters.containsKey(gene.charAt(index))));
                     if(tempOverRepLetters.containsKey(gene.charAt(index))){
                         if(tempOverRepLetters.get(gene.charAt(index)) > 0){
                             tempOverRepLetters.replace(gene.charAt(index), tempOverRepLetters.get(gene.charAt(index))-1);
