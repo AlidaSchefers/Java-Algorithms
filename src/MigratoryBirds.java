@@ -15,24 +15,18 @@ class Result {
 
     public static int migratoryBirds(List<Integer> arr) {
         // Write your code here
-        HashMap<Integer, Integer> typesFrequencies = new HashMap<Integer, Integer>();
-        typesFrequencies.put(1, 0);
-        typesFrequencies.put(2, 0);
-        typesFrequencies.put(3, 0);
-        typesFrequencies.put(4, 0);
-        typesFrequencies.put(5, 0);
-        for(Integer type : arr){
-            typesFrequencies.put(type, typesFrequencies.get(type)+1);
-            // System.out.println(type)
+        int[] typesArr = {1,2,3,4,5};
+        int[] typesFrequenciesArr = new int[5];
+        for (int i = 0; i < arr.size(); i++){
+            typesFrequenciesArr[arr.get(i)-1]++;
         }
         int maxType = 0;
         int maxFrequ = 0;
-        for (Map.Entry entry : typesFrequencies.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-            // if(entry.getValue() > maxFrequ){
-            //     maxType = entry.getKey();
-            //     maxFrequ = entry.getValue();
-            // }
+        for(int i = 0; i < typesFrequenciesArr.length; i++){
+            if(typesFrequenciesArr[i] > maxFrequ){
+                maxType = i+1;
+                maxFrequ = typesFrequenciesArr[i];
+            }
         }
         return maxType;
     }
