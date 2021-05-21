@@ -10,6 +10,16 @@ public class HasPathWithGivenSum {
 //    Tree<T> right;
 //}
     boolean hasPathWithGivenSum(Tree<Integer> t, int s) {
+        if(t == null){ return false; }
+        // boolean sumComparePath(Tree<Integer> t){
+        //     int path[] = new int[1000];
+        //     sumComparePathRecur(t, path, 0);
 
+        // }
+        t.sumComparePath();
+        return true;
+        // boolean sumComparePathRecur(Tree<Integer> t, int path[], int pathLen){
+
+        // }
 
     }
