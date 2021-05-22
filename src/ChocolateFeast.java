@@ -16,7 +16,13 @@ class Result {
 
     public static int chocolateFeast(int n, int c, int m) {
         // Write your code here
-
+        int totalNumOfChoco = n / c;
+        int curWrapperCount = n / c;
+        while(curWrapperCount / m != 0){
+            totalNumOfChoco += curWrapperCount / m;
+            curWrapperCount = (curWrapperCount / m) + (curWrapperCount % m); //new wrappers + leftover wrappers
+        }
+        return totalNumOfChoco;
     }
 
 }
