@@ -11,13 +11,13 @@ public class RemoveKFromList {
     // }
     //
     ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
-        //new var = l;
         //look at the head.
-        //if it's k, make next node the head until not k.
-        //if not, nothing.
+            //if it's k, make next node the head until not k.
+            //if not, nothing.
+        //new var = l;
         //iterate through l (until new pointer's value is null)
-        //is next node == k? if so, change pointer to next next node.
-        //if next node != k, then l = l.next;
+            //if node == k change pointer to next next node.
+            //if next node != k, then l = l.next;
         //return var;
         while(l != null && l.value == k){
             l = l.next;
