@@ -11,35 +11,26 @@ public class RemoveKFromList {
     // }
     //
     ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
-        if(l == null){
-            return l;
-        }else if(l.value == k && l.next == null){
-            l = null;
-            return l;
+        //new var = l;
+        //look at the head.
+        //if it's k, make next node the head until not k.
+        //if not, nothing.
+        //iterate through l (until new pointer's value is null)
+        //is next node == k? if so, change pointer to next next node.
+        //if next node != k, then l = l.next;
+        //return var;
+        while(l != null && l.value == k){
+            l = l.next;
         }
-        ListNode<Integer> curNode = l;
-        ListNode<Integer> removedList = new ListNode<Integer>(0); //will remove later!
-        while(curNode != null){
-            // System.out.println("curNode.value: "+curNode.value);
-            System.out.println("curNode.value ("+curNode.value+") == k ?: "+(curNode.value == k));
-            if(curNode.value == k){
-                curNode = curNode.next;
+        ListNode<Integer> newList = l;
+        while(l != null){
+            if(l.next != null && l.next.value == k){
+                l.next = l.next.next;
             }else{
-                ListNode<Integer> newNode = new ListNode<Integer>(curNode.value);
-                removedList.next = newNode;
-                curNode = curNode.next;
-                System.out.println("removedList.next.value: "+removedList.next.value);
-
+                l = l.next;
             }
-            // System.out.println("(after update) curNode.value: "+curNode.value);
         }
-        //just modify l! don't make a new linkedlist.
-        // if(curNode == k){
-        //     l = l.next
-        //     // curNode
-        // }
-
-        return removedList;
+        return newList;
 
     }
 
