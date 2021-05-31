@@ -13,10 +13,9 @@ class Result {
      */
 
     public static int pageCount(int n, int p) {
-        // solves 26/27 test cases
-        int minPageTurns = (p / 2) <= (n-p)/2 ?  (p / 2) : (n-p)/2;
-        //turns from front: p / 2 (rounded down)
-        //turns from the back: (n-p)/2 (rounded down)
+        //turns from front: p / 2
+        //turns from the back: (n/2)-(p/2)
+        int minPageTurns = (p / 2) <= (n/2)-(p/2) ?  (p / 2) : (n/2)-(p/2);
         return minPageTurns;
     }
 
