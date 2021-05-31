@@ -15,8 +15,7 @@ class Result {
     public static int pageCount(int n, int p) {
         //turns from front: p / 2
         //turns from the back: (n/2)-(p/2)
-        int minPageTurns = (p / 2) <= (n/2)-(p/2) ?  (p / 2) : (n/2)-(p/2);
-        return minPageTurns;
+        return Math.min((p / 2), ((n/2)-(p/2)));
     }
 
 }
