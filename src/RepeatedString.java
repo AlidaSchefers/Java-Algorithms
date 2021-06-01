@@ -1,24 +1,27 @@
 import java.io.*;
+import java.util.ArrayList;
 
 //comes from HackerRank: https://www.hackerrank.com/challenges/repeated-string/problem
-class Result { //solves 12 out of 22 test cases
-
-    public static long calcaCount(String s){
-        long aCount = 0;
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == 'a') {aCount++;}
-        }
-        return aCount;
-    }
+class Result {
 
     public static long repeatedString(String s, long n) {
         // Write your code here
-        long saCount = calcaCount(s);
-        long totalaCount = 0;
-        totalaCount += (n/s.length())*saCount;
-        int subStrIndex = (int) n % s.length();
-        totalaCount += calcaCount(s.substring(0, subStrIndex));
-        return totalaCount;
+        long aCount = 0;
+        ArrayList<Integer> saIndexes = new ArrayList<Integer>();
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == 'a') {
+                aCount++;
+                saIndexes.add(i);
+            }
+        }
+        aCount += ((n/s.length())*aCount)-aCount;
+        for(Integer index : saIndexes){
+            System.out.println(index);
+            if(index+1 <= (n % s.length())){
+                aCount++;
+            }
+        }
+        return aCount;
     }
 
 }
