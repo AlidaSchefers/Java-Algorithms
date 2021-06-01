@@ -1,20 +1,24 @@
 import java.io.*;
 
 //comes from HackerRank: https://www.hackerrank.com/challenges/repeated-string/problem
-class Result {
+class Result { //solves 12 out of 22 test cases
 
-    /*
-     * Complete the 'repeatedString' function below.
-     *
-     * The function is expected to return a LONG_INTEGER.
-     * The function accepts following parameters:
-     *  1. STRING s
-     *  2. LONG_INTEGER n
-     */
+    public static long calcaCount(String s){
+        long aCount = 0;
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == 'a') {aCount++;}
+        }
+        return aCount;
+    }
 
     public static long repeatedString(String s, long n) {
         // Write your code here
-
+        long saCount = calcaCount(s);
+        long totalaCount = 0;
+        totalaCount += (n/s.length())*saCount;
+        int subStrIndex = (int) n % s.length();
+        totalaCount += calcaCount(s.substring(0, subStrIndex));
+        return totalaCount;
     }
 
 }
