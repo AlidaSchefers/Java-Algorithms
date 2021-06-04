@@ -17,7 +17,21 @@ class Result {
      */
 
     public static List<Long> bonetrousle(long n, long k, int b) {
-        // Write your code here
+        //Pseudocode:
+        // Make a list with default values
+        // Add the numbers 1 through and including b in the list
+        // calculate the sum of this collect
+        //if the sum is greater than N,
+            // return a list of -1
+        //if the sum is equal to N
+            // return the current list
+        //if the sum is less than N:
+            //calculate the difference between N (our goal) and the sum.
+            //add the difference + the last element of the list.
+            //if this new num is less than or equal to K, make the last element this new number and return the list
+            //if the new num is greater than K, set the element to the value of K and decrease K by 1.
+            //repeat with the previous element in the list
+            //if we run out of elements, return list of -1.
 
     }
 
