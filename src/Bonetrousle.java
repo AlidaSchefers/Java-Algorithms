@@ -11,65 +11,58 @@ class Result {
         // Add the numbers 1 through and including b in the list
         // calculate the sum of this collect
         //if the sum is greater than N,
-            // return a list of -1
+        // return a list of -1
         //if the sum is equal to N
-            // return the current list
+        // return the current list
         //if the sum is less than N:
-            //calculate the difference between N (our goal) and the sum.
-            //add the difference + the last element of the list.
-            //if this new num is less than or equal to K, make the last element this new number and return the list
-            //if the new num is greater than K, set the element to the value of K and decrease K by 1.
-            //repeat with the previous element in the list
-            //if we run out of elements, return list of -1.
+        //calculate the difference between N (our goal) and the sum.
+        //add the difference + the last element of the list.
+        //if this new num is less than or equal to K, make the last element this new number and return the list
+        //if the new num is greater than K, set the element to the value of K and decrease K by 1.
+        //repeat with the previous element in the list
+        //if we run out of elements, return list of -1.
 
-        public static List<Long> bonetrousle(long n, long k, int b) {
-            // Make a list with default values
-            ArrayList<Long> boxesToBuy = new ArrayList<Long>();
-            long curStickTotal = 0;
+        // Make a list with default values
+        ArrayList<Long> boxesToBuy = new ArrayList<Long>();
 
-            // Add the numbers 1 through and including b in the list
-            for (long i = 1; i <= b; i++){
-                boxesToBuy.add(i);
-                // calculate the sum of this collect
-                curStickTotal += i;
-            }
-            System.out.println(boxesToBuy);
-            System.out.println("curStickTotal: "+curStickTotal);
-            //if the sum is greater than N, return a list of -1
-            if(curStickTotal > n){
-                ArrayList<Long> impossible = new ArrayList<Long>(Arrays.asList((long)-1));
-                return impossible;
-            }
-            //if the sum is equal to N, return the current list
-            if(curStickTotal == n){
-                return boxesToBuy;
-            }
-            //if the sum is less than N
-            if(curStickTotal < n){
-                int boxToModifyIndex = b-1;
-                while(boxToModifyIndex >= 0){
-                    //calculate the difference between N (our goal) and the sum.
-                    long neededStickIncrease = n - curStickTotal;
-                    //add the difference + the (last) element of the list.
-                    long newStickBox = boxesToBuy.get(boxToModifyIndex) + neededStickIncrease;
-                    //if this new num is less than or equal to K, make the (last) element this new number and return the list
-                    if(newStickBox <= k){
-                        boxesToBuy.set(boxToModifyIndex, newStickBox);
-                        return boxesToBuy;
-                        //if the new num is greater than K, set the element to the value of K and decrease K by 1.
-                    }else{ //if new num is greater k
-                        boxesToBuy.set(boxToModifyIndex, k);
-                        k--;
-                        //repeat with the previous element in the list
-                        boxToModifyIndex--;
-                    }
-                }
-            }
-            //if we run out of elements, return list of -1.
-            ArrayList<Long> impossible = new ArrayList<Long>(Arrays.asList((long)-1));
+        // Add the numbers 1 through and including b in the list
+        long curStickTotal = 0;
+        for (long i = 1; i <= b; i++) {
+            boxesToBuy.add(i);
+            // calculate the sum of this collect
+            curStickTotal += i;
+        }
+        //if the sum is greater than N, return a list of -1
+        if (curStickTotal > n) {
+            ArrayList<Long> impossible = new ArrayList<Long>(Arrays.asList((long) -1));
             return impossible;
         }
-
+        //if the sum is equal to N, return the current list
+        if (curStickTotal == n) {
+            return boxesToBuy;
+        }
+        //if the sum is less than N
+        if (curStickTotal < n) {
+            int boxToModifyIndex = b - 1;
+            while (boxToModifyIndex >= 0) {
+                //calculate the difference between N (our goal) and the sum.
+                long neededStickIncrease = n - curStickTotal;
+                //add the difference + the (last) element of the list.
+                long newStickBox = boxesToBuy.get(boxToModifyIndex) + neededStickIncrease;
+                //if this new num is less than or equal to K, make the (last) element this new number and return the list
+                if (newStickBox <= k) {
+                    boxesToBuy.set(boxToModifyIndex, newStickBox);
+                    return boxesToBuy;
+                    //if the new num is greater than K, set the element to the value of K and decrease K by 1.
+                } else { //if new num is greater k
+                    curStickTotal = curStickTotal + (k - boxesToBuy.get(boxToModifyIndex));
+                    boxesToBuy.set(boxToModifyIndex--, k--); //uses the variables in set and THEN reduces the values.
+                }
+            }
+        }
+        //if we run out of elements, return list of -1.
+        ArrayList<Long> impossible = new ArrayList<Long>(Arrays.asList((long) -1));
+        return impossible;
     }
 
 }
