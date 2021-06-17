@@ -20,22 +20,45 @@ class Result {
         //valley: sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
         //find and print the number of valleys walked through.
 
-        //solution notes:
         //initialize altitude to 0;
-        //bool isInValley = false;
-        //bool isInMountain = false;
+        int altitude = 0;
+        //boolean isInValley = false;
+        boolean isInValley = false;
+        //boolean isInMountain = false;
+        boolean isInMountain = false;
         //int valleyCount = 0;
+        int valleyCount = 0;
         //loop through string characters. if U, increase altitude by 1. if D, descrease altitude by 1.
-            //with each loop,
-                //if altitude positive: isInMountain = true;
-                //if altitude negative: isInValley = true;
-                //if altitude is 0
-                    //if isInValley is true:
-                        //valleyCount++
-                        //isInValley = false;
-                    //if isInMountain is true:
-                        //isInMountain = false;
+        for(int i = 0; i < steps; i++){
+            if(path.charAt(i) == 'U'){
+                altitude++;
+            }else{
+                altitude--;
+            }
+            // System.out.println("altitude: "+altitude);
+            // System.out.println("isInValley: "+isInValley);
+            // System.out.println("isInMountain: "+isInMountain);
+            //if altitude positive: isInMountain = true;
+            if(altitude > 0){
+                isInMountain = true;
+            }else if(altitude < 0){ //if altitude negative: isInValley = true;
+                isInValley = true;
+            }else{ //if altitude is 0
+                if(isInValley == true){
+                    //valleyCount++
+                    valleyCount++;
+                    //isInValley = false;
+                    isInValley = false;
+                }
+                //if isInMountain is true:
+                if(isInMountain == true){
+                    //isInMountain = false;
+                    isInMountain = false;
+                }
+            }
+        }
         //return valleyCount;
+        return valleyCount;
     }
 
 }
