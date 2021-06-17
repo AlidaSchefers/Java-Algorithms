@@ -20,41 +20,22 @@ class Result {
         //valley: sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
         //find and print the number of valleys walked through.
 
-        //initialize altitude to 0;
+        //starting altitude is 0.
         int altitude = 0;
-        //boolean isInValley = false;
-        boolean isInValley = false;
-        //boolean isInMountain = false;
-        boolean isInMountain = false;
-        //int valleyCount = 0;
+        //initialize valleyCount to 0
         int valleyCount = 0;
-        //loop through string characters. if U, increase altitude by 1. if D, descrease altitude by 1.
         for(int i = 0; i < steps; i++){
+            //if character is U, "uphill"
             if(path.charAt(i) == 'U'){
-                altitude++;
-            }else{
-                altitude--;
-            }
-            // System.out.println("altitude: "+altitude);
-            // System.out.println("isInValley: "+isInValley);
-            // System.out.println("isInMountain: "+isInMountain);
-            //if altitude positive: isInMountain = true;
-            if(altitude > 0){
-                isInMountain = true;
-            }else if(altitude < 0){ //if altitude negative: isInValley = true;
-                isInValley = true;
-            }else{ //if altitude is 0
-                if(isInValley == true){
-                    //valleyCount++
+                if(altitude == -1){ //if you are stepping up OUT OF A VALLEY AND ONTO THE FLAT GROUND,
+                    //add a valley to the count
                     valleyCount++;
-                    //isInValley = false;
-                    isInValley = false;
                 }
-                //if isInMountain is true:
-                if(isInMountain == true){
-                    //isInMountain = false;
-                    isInMountain = false;
-                }
+                //increase altitude by 1.
+                altitude++;
+            }else{ //if character is D, "downhill"
+                //decrease altitude by 1
+                altitude--;
             }
         }
         //return valleyCount;
