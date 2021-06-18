@@ -46,26 +46,31 @@ class Result {
                 "twenty eight",
                 "twenty nine"
         ));
-        if(m == 0){
-            return (numbers.get(h)+" o' clock");
-        }else if(m == 30){
-            return ("half past "+numbers.get(h));
-        }else if (m < 30){
-            if(m == 15){
-                return ("quarter"+" past "+numbers.get(h));
-            }
-            return m == 1 ? ("one minute"+" past "+numbers.get(h)) : (numbers.get(m)+" minutes"+" past "+numbers.get(h));
 
-        }else{ // m > 30
-            if(m == 45){
-                return (h == 12) ?
-                        ("quarter to "+numbers.get(1)) :
-                        ("quarter to "+numbers.get(h+1));
-            }else{
-                return (h == 12) ?
-                        (numbers.get(60-m)+" minutes to "+numbers.get(1)) :
-                        (numbers.get(60-m)+" minutes to "+numbers.get(h+1));
+        if(m == 0){
+            return (numbers.get(h) + " o' clock");
+        }else{
+            String part1;
+            if(m == 1 || (60-m) == 1){
+                part1 = "one minute";
+            }else if(m == 15 || (60-m) == 15){
+                part1 = "quarter";
+            }else if(m == 30){
+                part1 = "half";
+            }else if(m <= 30){
+                part1 = (numbers.get(m) + " minutes");
+            }else{ //m > 30
+                part1 = (numbers.get(60-m) + " minutes");
             }
+            String part2;
+            if(m <= 30){
+                part2 = ("past " + numbers.get(h));
+            }else{ //m > 30
+                part2 = (h == 12) ?
+                        ("to " + numbers.get(1)) :
+                        ("to " + numbers.get(h+1));
+            }
+            return (part1 + " " + part2);
         }
     }
 
