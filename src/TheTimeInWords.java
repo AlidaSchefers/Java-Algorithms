@@ -14,7 +14,59 @@ class Result {
      */
 
     public static String timeInWords(int h, int m) {
+        ArrayList<String> numbers = new ArrayList<>(Arrays.asList(
+                "zero",
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight",
+                "nine",
+                "ten",
+                "eleven",
+                "twelve",
+                "thirteen",
+                "fourteen",
+                "fifteen",
+                "sixteen",
+                "seventeen",
+                "eighteen",
+                "nineteen",
+                "twenty",
+                "twenty one",
+                "twenty two",
+                "twenty three",
+                "twenty four",
+                "twenty five",
+                "twenty six",
+                "twenty seven",
+                "twenty eight",
+                "twenty nine"
+        ));
+        if(m == 0){
+            return (numbers.get(h)+" o' clock");
+        }else if(m == 30){
+            return ("half past "+numbers.get(h));
+        }else if (m < 30){
+            if(m == 15){
+                return ("quarter"+" past "+numbers.get(h));
+            }
+            return m == 1 ? ("one minute"+" past "+numbers.get(h)) : (numbers.get(m)+" minutes"+" past "+numbers.get(h));
 
+        }else{ // m > 30
+            if(m == 45){
+                return (h == 12) ?
+                        ("quarter to "+numbers.get(1)) :
+                        ("quarter to "+numbers.get(h+1));
+            }else{
+                return (h == 12) ?
+                        (numbers.get(60-m)+" minutes to "+numbers.get(1)) :
+                        (numbers.get(60-m)+" minutes to "+numbers.get(h+1));
+            }
+        }
     }
 
 }
