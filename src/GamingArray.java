@@ -19,7 +19,20 @@ class Result {
     //input: game arr. output: the string of the name of the winner
 
     public static String gamingArray(List<Integer> arr) {
-
+        //make first arr element the curMax
+        int curMax = arr.get(0);
+        //initialize the turn count to 1 (Bob's turn)
+        int turnCount = 1; //Bob's first turn
+        //iterate through the arr L -> R
+        for(int num : arr){
+            //when there is an element greater than the curMax, update curMax and increase turn count by 1.
+            if(num > curMax){
+                turnCount++;
+                curMax = num;
+            }
+        }
+        //if total turn count is odd, Bob wins. if total turn count is even, Andy wins
+        return (turnCount % 2 == 0) ? "ANDY" : "BOB";
     }
 
 }
