@@ -13,6 +13,11 @@ class Result {
      * The function accepts INTEGER_ARRAY arr as parameter.
      */
 
+    //rules:
+    //BOB always plays first.
+    //last player who can make a move wins
+    //input: game arr. output: the string of the name of the winner
+
     public static String gamingArray(List<Integer> arr) {
 
     }
