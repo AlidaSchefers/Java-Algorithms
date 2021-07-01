@@ -58,28 +58,27 @@ class Result {
     public static List<Integer> absolutePermutation(int n, int k) {
         List<Integer> PermutationList = new ArrayList<Integer>();
         int[] availability = new int[n];
-        for(int i = 0; i < n; i++){
-            availability[i] = 1;
-        }
+        // System.out.println(Arrays.toString(availability));
+        // System.out.println(availability);
         int i = n;
         while(i > 0){
             int option1 = i+k;
             int option2 = i-k;
             //decide which option to add to PermutationList or return list with just -1.
-            boolean option1IsValid = (option1 <= n && option1 > 0 && availability[option1-1] == 1) ? true : false;
-            boolean option2IsValid = (option2 <= n && option2 > 0 && availability[option2-1] == 1) ? true : false;
+            boolean option1IsValid = (option1 <= n && option1 > 0 && availability[option1-1] == 0) ? true : false;
+            boolean option2IsValid = (option2 <= n && option2 > 0 && availability[option2-1] == 0) ? true : false;
             int valToAdd;
             if(option1IsValid && option2IsValid){
                 valToAdd = (option1 > option2) ? option1 : option2;
                 PermutationList.add(0, valToAdd);
-                availability[valToAdd-1]--;
+                availability[valToAdd-1] = 1;
                 i--;
             }else if(!option1IsValid && !option2IsValid){
                 return new ArrayList<Integer>(Arrays.asList(-1));
             }else{ //only one of the options is valid
                 valToAdd = (option1IsValid) ? option1 : option2;
                 PermutationList.add(0, valToAdd);
-                availability[valToAdd-1]--;
+                availability[valToAdd-1] = 1;
                 i--;
             }
 
