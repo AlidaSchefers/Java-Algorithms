@@ -6,6 +6,10 @@ import static java.util.stream.Collectors.toList;
 class Result {
 
     public static long stockmax(List<Integer> prices) {
+    //Initial ideas:
+        //find the index of the highest price
+        //look at the subsection of the array so only index 0 to (and including) the index of highest price. buy all the prices the days before the highest price, then sell all at the highest price.
+        //if there are still prices after the above ^^ highest price, repeat the above with only the prices after the previous highest price.
 
     }
 
