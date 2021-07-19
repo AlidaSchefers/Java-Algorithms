@@ -1,18 +1,21 @@
 import java.io.*;
+import java.math.BigInteger;
 
 //comes from HackerRank: https://www.hackerrank.com/challenges/fibonacci-modified/problem
 class Result {
 
     public static int fibonacciModified(int t1, int t2, int n) {
-       //initial ideas
-        for(int i = 1; i < n; i++){
-            int newt2 = t1+(t2*t2);
-            t1 = t2;
-            t2 = newt2;
-            System.out.println("newt1: "+t1);
-            System.out.println("newt2: "+t2);
+        for(int i = 1; i < n-1; i++){
+            BigInteger newt2 = BigInteger.valueOf(t2);
+            BigInteger newt1 = BigInteger.valueOf(t1);
+            BigInteger new2t2 = newt1.add((newt2.multiply(newt2)));
+            newt1 = newt2;
+            newt2 = new2t2;
+            System.out.println("newt1: "+newt1);
+            System.out.println("newt2: "+newt2);
         }
-        return t2;
+        // return newt2;
+        return 0;
     }
 
 }
