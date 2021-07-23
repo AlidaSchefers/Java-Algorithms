@@ -8,13 +8,25 @@ import static java.util.stream.Collectors.toList;
 class Result {
 
     public static List<Integer> icecreamParlor(int pocketMoney, List<Integer> prices) {
-        // Write your code here
+        List<Integer> toBuyIndeces = new ArrayList<Integer>();
+        for(int i = 0; i < prices.size(); i++){
+            if(prices.get(i) < pocketMoney){
+                for(int j = i+1; j < prices.size(); j++){
+                    if(prices.get(i) + prices.get(j) == pocketMoney){
 
-        //initialize empty toBuy ArrayList
-        //iterate through prices arr
-        //if current index's value is >= pocketMoney, skip
-        //else, do another loop where you add current index's value and value of the other indexes, and if add up to pocketMoney, return those indexes.
-
+                        if(i < j){
+                            toBuyIndeces.add(i+1);
+                            toBuyIndeces.add(j+1);
+                        }else{
+                            toBuyIndeces.add(j+1);
+                            toBuyIndeces.add(i+1);
+                        }
+                        return toBuyIndeces;
+                    }
+                }
+            }
+        }
+        return toBuyIndeces;
     }
 
 }
