@@ -7,7 +7,12 @@ import static java.util.stream.Collectors.toList;
 class Result {
 
     public static int workbook(int chapters, int problemsPerPage, List<Integer> problemsPerChapterArr) {
-
+        int specialProbCount = 0;
+        int currentPage = 1;
+        //loop to look at each page
+        //if the page number is within the range of the problem numbers on the page, increase the specialProbCount;
+        //return the specialProbCount
+        return specialProbCount;
     }
 
 }
