@@ -8,10 +8,20 @@ class Result {
 
     public static int workbook(int chapters, int problemsPerPage, List<Integer> problemsPerChapterArr) {
         int specialProbCount = 0;
-        int currentPage = 1;
-        //loop to look at each page
-        //if the page number is within the range of the problem numbers on the page, increase the specialProbCount;
-        //return the specialProbCount
+        int curPage = 1;
+        for(int i = 0; i < problemsPerChapterArr.size(); i++){ //chapter
+            int chapterProbs = problemsPerChapterArr.get(i);
+
+            for(int curProb = 1; curProb <= chapterProbs; curProb++){ // problem
+                if(curProb == curPage){
+                    specialProbCount++;
+                }
+                if(curProb == chapterProbs || (curProb % problemsPerPage == 0)){
+                    curPage++;
+                }
+            }
+
+        }
         return specialProbCount;
     }
 
