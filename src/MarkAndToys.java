@@ -5,13 +5,13 @@ import static java.util.stream.Collectors.toList;
 
 //comes from HackerRank: https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
 class Result {
-    public static int maximumToys(List<Integer> prices, int k) {
+    public static int maximumToys(List<Integer> prices, int spendingMoney) {
         Collections.sort(prices);
         int toyTotal = 0;
         for(int price : prices){
-            if(price < k){
+            if(price < spendingMoney){
                 toyTotal++;
-                k -= price;
+                spendingMoney -= price;
             }else{
                 return toyTotal;
             }
